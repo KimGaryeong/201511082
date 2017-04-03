@@ -2,9 +2,9 @@
 import requests
 import lxml.etree
 
-def getkb():
-    r = requests.get('http://www.kbreport.com/main')
-    _htmlTree = lxml.etree.HTML(r.text)
+def getkbreport():
+    kbrep = requests.get('http://www.kbreport.com/main')
+    _htmlTree = lxml.etree.HTML(kbrep.text)
     nodes = _htmlTree.xpath("//div[@class='team-rank-box']//table[@class='team-rank']//tr")
     print "테이블 행 갯수: ", len(nodes)
     counter=0
@@ -17,7 +17,7 @@ def getkb():
         print
 
 def main():
-    getkb()
+    getkbreport()
 
 if __name__ == "__main__":
     main()
